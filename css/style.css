@@ -340,3 +340,35 @@ h3.fiche__ouvrir { cursor: pointer; }
 .varietes .ajouter__mot { display: none; }
 .varietes .quantite button.ajouter { min-width: 40px; padding: 0 10px; font-size: 1.15rem; }
 .varietes .quantite button.ajouter--fait { font-size: .85rem; }
+
+/* ===== Cartes : une ligne par variante (ou taille), même présentation pour toutes ===== */
+.fiche__corps { padding: 12px 12px 12px; gap: 8px; }
+.fiche h3 { font-size: 1.08rem; }
+.fiche__sous { margin: -4px 0 0; font-size: .82rem; color: var(--doux); line-height: 1.3; overflow-wrap: break-word; hyphens: auto; }
+.fiche__mell { position: absolute; top: 8px; right: 8px; background: #f8ecd0; color: #8a5a08; font-size: .72rem; font-weight: 700;
+  padding: 2px 8px; border-radius: 999px; font-family: var(--titre); }
+.offres { list-style: none; margin: auto 0 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.offre { display: flex; align-items: center; gap: 8px; background: var(--creme); border: 1.5px solid transparent;
+  border-radius: 12px; padding: 6px 6px 6px 10px; min-height: 52px; }
+.offre--active { background: var(--anis-clair); border-color: var(--anis); }
+.offre.epuise .offre__texte { opacity: .55; }
+.offre__texte { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px; text-align: left;
+  border: 0; background: none; padding: 0; font: inherit; color: inherit; }
+button.offre__texte { cursor: pointer; }
+.offre__nom { font-size: .9rem; font-weight: 600; line-height: 1.25; overflow-wrap: break-word; hyphens: auto; }
+.offre__texte small { font-size: .78rem; color: var(--doux); }
+.offre__prix { color: var(--orange); font-weight: 700; font-size: .9rem; }
+.offre__texte > .offre__prix { font-size: 1.1rem; color: var(--ardoise); }
+.offre__alerte { font-style: normal; color: var(--faible); font-weight: 700; }
+.offre .quantite { flex: none; gap: 0; }
+.offre .quantite button { min-width: 40px; height: 40px; border-radius: 50%; padding: 0; font-size: 1.3rem; line-height: 1; }
+.offre .quantite button.ajouter { flex: none; }
+.offre .quantite button.ajouter--fait { border-radius: 999px; padding: 0 10px; font-size: .85rem; }
+.offre .ajouter__mot, .offre .ajouter__suite { display: none; }
+.offre .stock { font-size: .7rem; padding: 3px 8px; }
+.fiche__voir { margin-top: 2px; }
+@media (max-width: 600px) {
+  .fiche__corps { padding: 10px; }
+  .fiche__mell-mot { display: none; }
+  .offre { padding-left: 8px; }
+}

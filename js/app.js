@@ -654,45 +654,43 @@
     return memes.length === groupe.length ? x.unite : nom + " · " + x.unite;
   }
 
+  // Carte d'une plante : photo, nom, puis une ligne par variante (ou taille) avec son prix et son bouton.
+  // Même présentation qu'il y ait une ou plusieurs variantes ; « Voir la fiche » toujours en bas.
   function ficheProduit(groupe) {
     const p = groupe[0];
     const seul = groupe.length === 1;
-    // Une seule variété (éventuellement en plusieurs tailles) : son nom en titre
-    const uneVariete = groupe.every((x) => normaliser(x.variete) === normaliser(p.variete));
-    const titre = uneVariete && p.variete ? p.variete : p.nom;
-    const surtitre = uneVariete && p.variete ? p.nom : "";
-    const formats = [...new Set(groupe.map((x) => x.unite).filter(Boolean))];
+    const nbVarietes = new Set(groupe.map((x) => normaliser(x.variete))).size;
+    const sousTitre = nbVarietes === 1 ? p.variete : nbVarietes + " variétés";
     const mellifere = p.categories.some((c) => normaliser(c).startsWith("mellif"));
     // Variante montrée sur la photo de la carte : la première qui a sa photo
     const actif = groupe.find((x) => x.photo) || p;
     const photo = actif.photo;
-    const prix = (x) => (x.prix !== null ? euros(x.prix) : "");
-    const s = etatStock(p);
-    const lignes = seul
-      ? '<div class="fiche__pied"><div class="fiche__bas"><span class="prix">' + prix(p) + '</span>' +
-        (p.stock !== 0 ? '<span class="stock stock--' + s.classe + '">' + s.texte + '</span>' : '') + '</div>' +
-        '<div class="fiche__action">' + controleQuantite(p) + '</div></div>'
-      : '<ul class="varietes">' + groupe.map((x) => {
-          const sx = etatStock(x);
-          // Toucher le nom d'une variante affiche sa photo sur la carte
-          return '<li class="' + (x.stock === 0 ? 'epuise' : '') + (x === actif ? ' varietes--active' : '') + '">' +
-            '<button type="button" class="varietes__nom" data-voir="' + echapper(x.id) + '" data-photo="' + echapper(x.photo || '') +
-            '" aria-pressed="' + (x === actif) + '" aria-label="Voir la photo de ' + echapper(nomVariante(groupe, x)) + '">' +
-            '<span>' + pastilleGroupe(groupe, x) + echapper(nomVariante(groupe, x)) + '</span><small>' +
-            [prix(x), x.stock !== 0 && sx.classe === "faible" ? sx.texte : ""].filter(Boolean).join(" · ") +
-            '</small></button>' + controleQuantite(x) + '</li>';
-        }).join("") + '</ul>';
+    const prix = (x) => (x.prix !== null ? euros(x.prix) : "Prix au retrait");
+    const lignes = '<ul class="offres">' + groupe.map((x) => {
+      const sx = etatStock(x);
+      const alerte = x.stock !== 0 && sx.classe === "faible" ? '<em class="offre__alerte">' + sx.texte + '</em>' : '';
+      // Une seule ligne : le prix en avant, le format dessous ; sinon le nom de la variante, qui se touche pour voir sa photo
+      const texte = seul
+        ? '<span class="offre__texte"><b class="offre__prix">' + prix(x) + '</b>' +
+          (x.unite || alerte ? '<small>' + [x.unite ? echapper(x.unite) : '', alerte].filter(Boolean).join(' · ') + '</small>' : '') + '</span>'
+        : '<button type="button" class="offre__texte" data-voir="' + echapper(x.id) + '" data-photo="' + echapper(x.photo || '') +
+          '" aria-pressed="' + (x === actif) + '" aria-label="Voir la photo de ' + echapper(nomVariante(groupe, x)) + '">' +
+          '<span class="offre__nom">' + pastilleGroupe(groupe, x) + echapper(nomVariante(groupe, x)) + '</span>' +
+          '<small><b class="offre__prix">' + prix(x) + '</b>' + (alerte ? ' · ' + alerte : '') + '</small></button>';
+      return '<li class="offre' + (x.stock === 0 ? ' epuise' : '') + (!seul && x === actif ? ' offre--active' : '') + '">' +
+        texte + controleQuantite(x) + '</li>';
+    }).join("") + '</ul>';
     return '<article class="fiche' + (groupe.every((x) => x.stock === 0) ? ' fiche--epuisee' : '') + '" data-ids="' + idsGroupe(groupe) +
       '" data-sel="' + echapper(actif.id) + '">' +
-      '<button type="button" class="fiche__photo fiche__ouvrir" style="background-color:' + couleurCategorie(p.categories[0]) + '" aria-label="Voir la fiche de ' + echapper(titre) + '">' +
+      '<button type="button" class="fiche__photo fiche__ouvrir" style="background-color:' + couleurCategorie(p.categories[0]) + '" aria-label="Voir la fiche de ' + echapper(p.nom) + '">' +
       '<img src="' + echapper(photo || '') + '" alt="" loading="lazy"' + (photo ? '' : ' hidden') + ' onerror="this.hidden=true">' +
-      '<span class="fiche__lettre" aria-hidden="true">' + echapper(titre.charAt(0)) + '</span>' +
+      '<span class="fiche__lettre" aria-hidden="true">' + echapper(p.nom.charAt(0)) + '</span>' +
       '<span class="fiche__badge">' + echapper(p.categories[0]) + '</span>' +
-      (groupe.length > 1 ? '<span class="fiche__nbvar">' + echapper(actif.variete || (groupe.length + ' variantes')) + '</span>' : '') + '</button>' +
-      '<div class="fiche__corps">' + (surtitre ? '<span class="fiche__surtitre">' + echapper(surtitre) + '</span>' : '') +
-      '<h3 class="fiche__ouvrir">' + echapper(titre) + '</h3>' +
-      (formats.length || mellifere ? '<div class="puces">' + formats.map((f) => '<span class="puce">' + echapper(f) + '</span>').join("") +
-        (mellifere ? '<span class="puce puce--mell">🐝 Mellifère</span>' : '') + '</div>' : '') +
+      (mellifere ? '<span class="fiche__mell" title="Plante mellifère">🐝<span class="fiche__mell-mot"> Mellifère</span></span>' : '') +
+      (groupe.length > 1 ? '<span class="fiche__nbvar">' + echapper(actif.variete || nomVariante(groupe, actif)) + '</span>' : '') + '</button>' +
+      '<div class="fiche__corps">' +
+      '<h3 class="fiche__ouvrir">' + echapper(p.nom) + '</h3>' +
+      (sousTitre ? '<p class="fiche__sous">' + echapper(sousTitre) + '</p>' : '') +
       lignes + '<button type="button" class="fiche__voir fiche__ouvrir">Voir la fiche ›</button></div></article>';
   }
 
@@ -701,9 +699,9 @@
     const carte = b.closest(".fiche");
     const x = trouver(b.dataset.voir);
     carte.dataset.sel = b.dataset.voir;
-    carte.querySelectorAll(".varietes li").forEach((li) => {
+    carte.querySelectorAll(".offre").forEach((li) => {
       const actif = li.contains(b);
-      li.classList.toggle("varietes--active", actif);
+      li.classList.toggle("offre--active", actif);
       li.querySelector("[data-voir]").setAttribute("aria-pressed", actif);
     });
     const img = carte.querySelector(".fiche__photo img");
