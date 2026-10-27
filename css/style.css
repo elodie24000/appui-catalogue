@@ -345,8 +345,9 @@ h3.fiche__ouvrir { cursor: pointer; }
 .fiche__corps { padding: 12px 12px 12px; gap: 8px; }
 .fiche h3 { font-size: 1.08rem; }
 .fiche__sous { margin: -4px 0 0; font-size: .82rem; color: var(--doux); line-height: 1.3; overflow-wrap: break-word; hyphens: auto; }
-.fiche__mell { position: absolute; top: 8px; right: 8px; background: #f8ecd0; color: #8a5a08; font-size: .72rem; font-weight: 700;
-  padding: 2px 8px; border-radius: 999px; font-family: var(--titre); }
+/* « Mellifère » sous « Vivaces » ou « Annuelles », dans le même style (fond blanc arrondi) */
+.fiche__mell { position: absolute; top: 34px; left: 8px; background: #fff; color: var(--ardoise); font-size: .72rem; font-weight: 700;
+  padding: 2px 9px; border-radius: 999px; }
 .offres { list-style: none; margin: auto 0 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
 .offre { display: flex; align-items: center; gap: 8px; background: var(--creme); border: 1.5px solid transparent;
   border-radius: 12px; padding: 6px 6px 6px 10px; min-height: 52px; }
@@ -369,6 +370,5 @@ button.offre__texte { cursor: pointer; }
 .fiche__voir { margin-top: 2px; }
 @media (max-width: 600px) {
   .fiche__corps { padding: 10px; }
-  .fiche__mell-mot { display: none; }
   .offre { padding-left: 8px; }
 }
