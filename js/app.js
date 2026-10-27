@@ -512,6 +512,9 @@
       if (!parCle[cle]) { parCle[cle] = []; fiches.push(parCle[cle]); }
       parCle[cle].push(p);
     });
+    // Ordre alphabétique des plantes (puis des variétés), accents et majuscules ignorés
+    const alpha = (a, b) => a.localeCompare(b, "fr", { sensitivity: "base", numeric: true });
+    fiches.sort((a, b) => alpha(a[0].nom, b[0].nom) || alpha(a[0].variete || "", b[0].variete || ""));
 
     // Séparation nette : bandeau de la sélection en cours, qui reste visible en faisant défiler
     const photoSel = photoCategorie(filtreCategorie);
