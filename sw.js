@@ -1,6 +1,6 @@
 // Service worker : permet d'installer l'appli et de l'ouvrir hors connexion.
 // Les stocks (tableur Google) ne sont jamais mis en cache ici : ils sont relus à chaque ouverture.
-const VERSION = "appui-v60";
+const VERSION = "appui-v61";
 const FICHIERS = [
   "./", "index.html", "css/style.css", "js/app.js", "js/config.js",
   "manifest.webmanifest", "icons/icon-192.png", "icons/icon-512.png",
