@@ -203,7 +203,7 @@ function commande_(d) {
   if (trouve.client.actif === "non") return { ok: false, erreur: "Ce compte est désactivé. Contactez APPUI.", deconnecter: true };
   const c = trouve.client;
   const demandes = (d.lignes || []).slice(0, 100)
-    .map((l) => ({ cle: cleProduit_(l.catalogue, l.nom, l.variete), quantite: Math.floor(Number(l.quantite)) }))
+    .map((l) => ({ cle: cleProduit_(l.catalogue, l.nom, l.variete, l.unite), quantite: Math.floor(Number(l.quantite)) }))
     .filter((l) => l.quantite > 0);
   if (!demandes.length) return { ok: false, erreur: "La commande est vide." };
 
@@ -316,7 +316,7 @@ function lireCatalogue_() {
   });
   const v = (l, cle) => (index[cle] >= 0 ? l.valeurs[index[cle]] : "");
   const parCle = {};
-  for (let i = lignes.length - 1; i >= 0; i--) parCle[cleProduit_(v(lignes[i], "catalogue"), v(lignes[i], "nom"), v(lignes[i], "variete"))] = lignes[i];
+  for (let i = lignes.length - 1; i >= 0; i--) parCle[cleProduit_(v(lignes[i], "catalogue"), v(lignes[i], "nom"), v(lignes[i], "variete"), v(lignes[i], "unite"))] = lignes[i];
   return {
     entetes, lignes, index,
     trouver: (cle) => parCle[cle],
@@ -324,9 +324,10 @@ function lireCatalogue_() {
   };
 }
 
-// Même calcul que dans l'application (js/app.js, cleProduit)
-function cleProduit_(catalogue, nom, variete) {
-  return [catalogue, nom, variete].map(normaliser_).join("|");
+// Même calcul que dans l'application (js/app.js, cleProduit). Le format en fait partie :
+// une même variété peut être vendue en godet et en pot, chaque taille avec son prix et son stock.
+function cleProduit_(catalogue, nom, variete, format) {
+  return [catalogue, nom, variete, format].map(normaliser_).join("|");
 }
 
 // Photos du dossier « Photos du catalogue » : nom du fichier (sans extension) → adresse de l'image

@@ -91,12 +91,12 @@
       await chargerCatalogue();
       const ventes = lire(CLE_VENTES_DEMO, {});
       for (const l of d.lignes) {
-        const p = trouver(cleProduit(l.catalogue, l.nom, l.variete));
+        const p = trouver(cleProduit(l.catalogue, l.nom, l.variete, l.unite));
         if (!p || (p.stock !== null && p.stock < l.quantite)) {
           return { ok: false, erreur: "« " + l.nom + " » n'est plus disponible en quantité suffisante. Votre panier a été mis à jour.", actualiser: true };
         }
       }
-      d.lignes.forEach((l) => { const k = cleProduit(l.catalogue, l.nom, l.variete); ventes[k] = (ventes[k] || 0) + l.quantite; });
+      d.lignes.forEach((l) => { const k = cleProduit(l.catalogue, l.nom, l.variete, l.unite); ventes[k] = (ventes[k] || 0) + l.quantite; });
       ecrire(CLE_VENTES_DEMO, ventes);
       return { ok: true, numero: "DEMO-" + String(Date.now()).slice(-4) };
     }
@@ -159,8 +159,9 @@
   let photosDrive = {};
   let fichesLivrees = {};
 
-  // Identifiant d'un produit, identique au calcul du programme du tableur (cleProduit_)
-  const cleProduit = (catalogue, nom, variete) => [catalogue, nom, variete].map(normaliser).join("|");
+  // Identifiant d'un produit, identique au calcul du programme du tableur (cleProduit_).
+  // Le format en fait partie : une même variété peut exister en godet et en pot.
+  const cleProduit = (catalogue, nom, variete, format) => [catalogue, nom, variete, format].map(normaliser).join("|");
 
   const nombre = (s) => parseFloat(String(s).replace(/[^\d,.-]/g, "").replace(",", "."));
 
@@ -183,7 +184,7 @@
       if (["oui", "o", "x", "1"].includes(normaliser(val(l, "mellifere"))) &&
           !categories.some((c) => normaliser(c).startsWith("mellif"))) categories.push("Mellifères");
       return {
-        id: cleProduit(val(l, "catalogue"), val(l, "nom"), val(l, "variete")),
+        id: cleProduit(val(l, "catalogue"), val(l, "nom"), val(l, "variete"), val(l, "unite")),
         catalogue: val(l, "catalogue") || "Catalogue",
         categories: categories.length ? categories : ["Divers"],
         nom: val(l, "nom"),
@@ -246,11 +247,12 @@
   function photosDesVariantes(liste) {
     const groupes = {};
     liste.forEach((p) => (groupes[p.categories[0] + "|" + p.nom] = groupes[p.categories[0] + "|" + p.nom] || []).push(p));
-    Object.values(groupes).filter((g) => g.length > 1).forEach((g) => {
-      const compte = {};
-      g.forEach((x) => { if (x.photoTableur) compte[cleFichier(x.photoTableur)] = (compte[cleFichier(x.photoTableur)] || 0) + 1; });
+    // Les tailles d'une même variété (godet, pot…) gardent la photo de la variété
+    Object.values(groupes).filter((g) => new Set(g.map((x) => normaliser(x.variete))).size > 1).forEach((g) => {
+      const varietes = {};
+      g.forEach((x) => { if (x.photoTableur) (varietes[cleFichier(x.photoTableur)] = varietes[cleFichier(x.photoTableur)] || new Set()).add(normaliser(x.variete)); });
       g.forEach((x) => {
-        const propre = x.photoTableur && compte[cleFichier(x.photoTableur)] === 1 ? x.photoColonne : "";
+        const propre = x.photoTableur && varietes[cleFichier(x.photoTableur)].size === 1 ? x.photoColonne : "";
         x.photo = x.photoVariete || propre;
       });
     });
@@ -515,6 +517,12 @@
     // Ordre alphabétique des plantes (puis des variétés), accents et majuscules ignorés
     const alpha = (a, b) => a.localeCompare(b, "fr", { sensitivity: "base", numeric: true });
     fiches.sort((a, b) => alpha(a[0].nom, b[0].nom) || alpha(a[0].variete || "", b[0].variete || ""));
+    // Dans une carte, les tailles d'une même variété se suivent (ordre du tableur)
+    fiches.forEach((g) => {
+      const rang = new Map();
+      g.forEach((x) => { if (!rang.has(normaliser(x.variete))) rang.set(normaliser(x.variete), rang.size); });
+      g.sort((x, y) => rang.get(normaliser(x.variete)) - rang.get(normaliser(y.variete)));
+    });
 
     // Séparation nette : bandeau de la sélection en cours, qui reste visible en faisant défiler
     const photoSel = photoCategorie(filtreCategorie);
@@ -637,11 +645,22 @@
 
   const idsGroupe = (groupe) => echapper(groupe.map((x) => x.id).join("§"));
 
+  // Nom d'une variante dans sa carte. Une même variété vendue en plusieurs tailles se distingue
+  // par son format : « Grosso · Pot 3 L », ou « Pot 3 L » seul si la carte n'a qu'une variété.
+  function nomVariante(groupe, x) {
+    const nom = x.variete || x.nom;
+    const memes = groupe.filter((y) => normaliser(y.variete) === normaliser(x.variete));
+    if (memes.length < 2 || !x.unite) return nom;
+    return memes.length === groupe.length ? x.unite : nom + " · " + x.unite;
+  }
+
   function ficheProduit(groupe) {
     const p = groupe[0];
     const seul = groupe.length === 1;
-    const titre = seul && p.variete ? p.variete : p.nom;
-    const surtitre = seul && p.variete ? p.nom : "";
+    // Une seule variété (éventuellement en plusieurs tailles) : son nom en titre
+    const uneVariete = groupe.every((x) => normaliser(x.variete) === normaliser(p.variete));
+    const titre = uneVariete && p.variete ? p.variete : p.nom;
+    const surtitre = uneVariete && p.variete ? p.nom : "";
     const formats = [...new Set(groupe.map((x) => x.unite).filter(Boolean))];
     const mellifere = p.categories.some((c) => normaliser(c).startsWith("mellif"));
     // Variante montrée sur la photo de la carte : la première qui a sa photo
@@ -658,8 +677,8 @@
           // Toucher le nom d'une variante affiche sa photo sur la carte
           return '<li class="' + (x.stock === 0 ? 'epuise' : '') + (x === actif ? ' varietes--active' : '') + '">' +
             '<button type="button" class="varietes__nom" data-voir="' + echapper(x.id) + '" data-photo="' + echapper(x.photo || '') +
-            '" aria-pressed="' + (x === actif) + '" aria-label="Voir la photo de ' + echapper(x.variete || x.nom) + '">' +
-            '<span>' + pastilleGroupe(groupe, x) + echapper(x.variete || x.nom) + '</span><small>' +
+            '" aria-pressed="' + (x === actif) + '" aria-label="Voir la photo de ' + echapper(nomVariante(groupe, x)) + '">' +
+            '<span>' + pastilleGroupe(groupe, x) + echapper(nomVariante(groupe, x)) + '</span><small>' +
             [prix(x), x.stock !== 0 && sx.classe === "faible" ? sx.texte : ""].filter(Boolean).join(" · ") +
             '</small></button>' + controleQuantite(x) + '</li>';
         }).join("") + '</ul>';
@@ -719,10 +738,11 @@
       '<div class="puces"><span class="puce">' + echapper(p.categories[0]) + '</span>' +
       (mellifere ? '<span class="puce puce--mell">🐝 Mellifère</span>' : '') + '</div>' +
       '<h2>' + echapper(p.nom) + '</h2>' + (inf.latin ? '<p class="detail__latin">' + echapper(inf.latin) + '</p>' : '') +
-      (groupe.length > 1 ? '<p class="detail__titre-section">Choisissez une variante</p><div class="detail__variantes">' +
+      (groupe.length > 1 ? '<p class="detail__titre-section">Choisissez ' +
+        (groupe.every((x) => normaliser(x.variete) === normaliser(p.variete)) ? 'une taille' : 'une variante') + '</p><div class="detail__variantes">' +
         groupe.map((x) => '<button type="button" class="variante' + (x.id === v.id ? ' actif' : '') + (x.stock === 0 ? ' epuise' : '') +
-          '" data-sel="' + echapper(x.id) + '">' + pastilleGroupe(groupe, x) + echapper(x.variete || x.nom) + '</button>').join("") + '</div>' : '') +
-      '<div class="detail__achat"><div><strong>' + echapper(v.variete || v.nom) + '</strong>' +
+          '" data-sel="' + echapper(x.id) + '">' + pastilleGroupe(groupe, x) + echapper(nomVariante(groupe, x)) + '</button>').join("") + '</div>' : '') +
+      '<div class="detail__achat"><div><strong>' + echapper(nomVariante(groupe, v)) + '</strong>' +
       '<span class="prix">' + (v.prix !== null ? euros(v.prix) : '') + '</span>' +
       (v.stock !== 0 ? ' <span class="stock stock--' + s.classe + '">' + s.texte + '</span>' : '') + '</div>' +
       controleQuantite(v) + '</div>' +
@@ -810,7 +830,7 @@
         action: "commande",
         clientId: client.id,
         jeton: client.jeton,
-        lignes: lignesPanier().map(({ p, q }) => ({ catalogue: p.catalogue, nom: p.nom, variete: p.variete, quantite: q })),
+        lignes: lignesPanier().map(({ p, q }) => ({ catalogue: p.catalogue, nom: p.nom, variete: p.variete, unite: p.unite, quantite: q })),
         message: el.messagePanier.value.trim(),
       });
       if (!rep.ok) {

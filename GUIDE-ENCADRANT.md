@@ -45,6 +45,7 @@ Les légumes et les fleurs sont rangés dans **deux onglets séparés**, en bas 
 - **Prix (€)** : le chiffre seul, par exemple `4,5`.
 - **Visible** : `Non` (liste déroulante) pour cacher une plante (pas encore prête, fin de saison) sans supprimer la ligne.
 - **Plusieurs variétés d'une même fleur** (Calibrachoa Sweet love, Lemon slice…) : une ligne par variété, avec le même nom dans **Plante**. L'appli les regroupe en une seule fiche où le client choisit sa variété.
+- **Plusieurs tailles de pot pour une même variété** (godet, pot de 3 L…) : une ligne par taille. Recopiez la ligne existante, gardez la même **Plante** et la même **Variété**, et changez seulement le **Format** (`Pot 3 L`), le **Prix** et la **Quantité disponible**. La photo est la même pour toutes les tailles. Sur la fiche, le client choisit sa taille, et chaque taille a son propre stock. Le **Format** doit être rempli sur chacune des lignes, y compris celle du godet (`Godet 9 cm`).
 
 ### Se retrouver dans la liste
 
