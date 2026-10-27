@@ -1,6 +1,6 @@
 // Service worker : permet d'installer l'appli et de l'ouvrir hors connexion.
 // Les stocks (tableur Google) ne sont jamais mis en cache ici : ils sont relus à chaque ouverture.
-const VERSION = "appui-v66";
+const VERSION = "appui-v67";
 const FICHIERS = [
   "./", "index.html", "css/style.css", "js/app.js", "js/config.js",
   "manifest.webmanifest", "icons/icon-192.png", "icons/icon-512.png",
@@ -22,7 +22,8 @@ self.addEventListener("fetch", (e) => {
   const url = new URL(e.request.url);
   if (e.request.method !== "GET" || url.origin !== location.origin) return;
   e.respondWith(
-    fetch(e.request)
+    // « no-cache » : le navigateur redemande toujours au serveur si le fichier a changé
+    fetch(e.request, { cache: "no-cache" })
       .then((rep) => {
         const copie = rep.clone();
         caches.open(VERSION).then((c) => c.put(e.request, copie));

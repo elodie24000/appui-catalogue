@@ -905,7 +905,17 @@
   };
   $("#btnFermerInstall").onclick = () => { bandeau.hidden = true; ecrire("appui.installRefusee", true); };
 
-  if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
+  // Nouvelle version publiée : le service worker se met à jour et la page se recharge une fois d'elle-même
+  if ("serviceWorker" in navigator) {
+    const dejaControlee = !!navigator.serviceWorker.controller;
+    let recharge = false;
+    navigator.serviceWorker.addEventListener("controllerchange", () => {
+      if (dejaControlee && !recharge) { recharge = true; location.reload(); }
+    });
+    navigator.serviceWorker.register("sw.js", { updateViaCache: "none" })
+      .then((r) => document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") r.update(); }))
+      .catch(() => {});
+  }
 
   // ---------- Démarrage ----------
   let catalogueCharge = null;
