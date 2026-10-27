@@ -656,6 +656,15 @@
 
   // Carte d'une plante : photo, nom, puis une ligne par variante (ou taille) avec son prix et son bouton.
   // Même présentation qu'il y ait une ou plusieurs variantes ; « Voir la fiche » toujours en bas.
+  // Nom latin sur la carte : celui de la plante ; avec plusieurs variétés, sans le nom de variété entre guillemets
+  function latinCarte(groupe) {
+    const noms = groupe.map((x) => (x.infos && x.infos.latin) || "").filter(Boolean);
+    if (!noms.length) return "";
+    if (groupe.length === 1) return noms[0];
+    const especes = [...new Set(noms.map((n) => n.replace(/\s*['‘’"].*$/, "").replace(/\s+(hybrida|hybride)$/i, "").trim()))];
+    return especes.length === 1 ? especes[0] : "";
+  }
+
   function ficheProduit(groupe) {
     const p = groupe[0];
     const seul = groupe.length === 1;
@@ -690,6 +699,7 @@
       (groupe.length > 1 ? '<span class="fiche__nbvar">' + echapper(actif.variete || nomVariante(groupe, actif)) + '</span>' : '') + '</button>' +
       '<div class="fiche__corps">' +
       '<h3 class="fiche__ouvrir">' + echapper(p.nom) + '</h3>' +
+      (latinCarte(groupe) ? '<p class="fiche__sous" style="font-style:italic">' + echapper(latinCarte(groupe)) + '</p>' : '') +
       (sousTitre ? '<p class="fiche__sous">' + echapper(sousTitre) + '</p>' : '') +
       lignes + '<button type="button" class="fiche__voir fiche__ouvrir">Voir la fiche ›</button></div></article>';
   }
