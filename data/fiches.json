@@ -1,0 +1,686 @@
+{
+ "agapanthefirework": {
+  "source": "Voltz p.34",
+  "latin": "Agapanthus hybrida 'Fireworks'",
+  "hauteur": "20-40 cm",
+  "port": "touffe",
+  "feuillage": "semi-persistant",
+  "utilisation": "massif et bac",
+  "description": "Splendide variété semi-persistante. Très florifère.",
+  "couleur": "Bleu et blanc"
+ },
+ "alocasiamacrorhiza": {
+  "source": "Voltz p.39",
+  "latin": "Alocasia 'Macrorrhiza'",
+  "hauteur": "60-80 cm",
+  "port": "érigé",
+  "utilisation": "massif",
+  "description": "Grandes feuilles vertes brillantes jusqu'à 2 mètres de long.",
+  "couleur": "Feuillage vert brillant"
+ },
+ "amaranthe": {
+  "source": "Voltz p.43 (Amaranthus caudatus 'Queue Rouge')",
+  "latin": "Amaranthus caudatus",
+  "hauteur": "80-100 cm",
+  "port": "retombant",
+  "utilisation": "massif et vasque",
+  "description": "Feuillage vert. Longs plumets retombants rouges de juillet à septembre.",
+  "couleur": "Rouge",
+  "floraison": "Juillet à septembre"
+ },
+ "anthemisagranddaisypink": {
+  "source": "Voltz p.48 (Argyranthemum frutescens Grandaisy® Pink)",
+  "latin": "Argyranthemum frutescens",
+  "hauteur": "40-60 cm",
+  "port": "droit",
+  "utilisation": "massif et vasque",
+  "description": "Une valeur sûre ! Série à grandes fleurs simples et fort développement.",
+  "couleur": "Rose"
+ },
+ "bananierredtiger": {
+  "source": "Voltz p.50",
+  "latin": "Musa 'Red Tiger'",
+  "port": "droit",
+  "feuillage": "caduc",
+  "utilisation": "massif",
+  "description": "Feuillage d'abord vert vif se colorant de striures rouges sur le dessus et de rayures pourpres sur le dessous. Très décoratif. Belle allure exotique.",
+  "couleur": "Feuillage vert strié de rouge"
+ },
+ "bananiermaurelii": {
+  "source": "Voltz p.50",
+  "latin": "Ensete ventricosum 'Maurelii'",
+  "hauteur": "100-120 cm",
+  "port": "droit",
+  "feuillage": "caduc",
+  "utilisation": "massif",
+  "description": "Feuillage rouge-orange sur la face supérieure et marron-chocolat sur la face inférieure. Protection obligatoire contre le froid pendant l'hiver.",
+  "couleur": "Feuillage rouge-orange et chocolat",
+  "rusticite": "Non rustique (à protéger l'hiver)"
+ },
+ "calibrachoalemonslice": {
+  "latin": "Calibrachoa hybrida Superbells®",
+  "hauteur": "20-40 cm",
+  "port": "semi-retombant",
+  "utilisation": "massif, suspension et vasque",
+  "description": "Gamme à grandes fleurs et à port compact en boule, performante toute la saison.",
+  "source": "Voltz p.66",
+  "couleur": "Jaune et blanc rayé"
+ },
+ "calibrachoasweetlove": {
+  "latin": "Calibrachoa hybrida Superbells®",
+  "hauteur": "20-40 cm",
+  "port": "semi-retombant",
+  "utilisation": "massif, suspension et vasque",
+  "description": "Gamme à grandes fleurs et à port compact en boule, performante toute la saison.",
+  "source": "Voltz p.66 (Double Sweet Love)",
+  "couleur": "Rose vif bordé de blanc, fleur double"
+ },
+ "cannaredgoldenflamme": {
+  "source": "Voltz p.70 (Cannova® F1 Red Golden Flame)",
+  "latin": "Canna indica Cannova® F1",
+  "hauteur": "100-120 cm",
+  "port": "droit",
+  "utilisation": "massif et vasque",
+  "description": "Canna très précoce, robuste, compact et très ramifié, à longue floraison. Adapté aux températures basses.",
+  "couleur": "Rouge et jaune"
+ },
+ "geraniumcoombland": {
+  "latin": "Geranium hybrida 'Coombland White'",
+  "hauteur": "20-40 cm",
+  "port": "traçant puis tapissant",
+  "feuillage": "caduc",
+  "utilisation": "massif et bac",
+  "description": "Géranium vivace tapissant fleurissant du printemps à l'automne. Joli feuillage, bon couvre-sol non envahissant.",
+  "couleur": "Blanc-rosé à blanc",
+  "floraison": "Du printemps à l'automne",
+  "source": "Voltz p.117 (Coombland White)"
+ },
+ "acorusgramineusogon": {
+  "latin": "Acorus gramineus 'Ogon'",
+  "hauteur": "20-40 cm",
+  "port": "touffe",
+  "feuillage": "persistant",
+  "utilisation": "massif",
+  "description": "Plante à rhizome formant une touffe compacte de longues feuilles effilées, persistantes et souples.",
+  "couleur": "Feuillage vert et jaune doré",
+  "source": "Voltz p.122"
+ },
+ "canneasucre": {
+  "latin": "Saccharum officinarum violaceum",
+  "hauteur": "150-200 cm",
+  "port": "droit",
+  "feuillage": "caduc",
+  "utilisation": "massif",
+  "description": "Graminée à feuillage pourpre du plus bel effet pour structurer vos massifs !",
+  "couleur": "Feuillage pourpre",
+  "source": "Voltz p.123 (variété Pourpre, seule canne à sucre du catalogue)"
+ },
+ "imperataredbaron": {
+  "latin": "Imperata cylindrica 'Red Baron'",
+  "hauteur": "40-60 cm",
+  "port": "droit",
+  "feuillage": "caduc",
+  "utilisation": "massif",
+  "description": "Graminée semi-persistante au port droit étoffé. Larges feuilles vert vif tournant au rouge cramoisi au cours de l'été. Petits épis plumeux blanc argenté.",
+  "couleur": "Feuillage vert vif puis rouge cramoisi",
+  "source": "Voltz p.125"
+ },
+ "pennisetumvertigo": {
+  "latin": "Pennisetum purpureum 'Vertigo'",
+  "hauteur": "100-120 cm",
+  "port": "droit",
+  "utilisation": "massif",
+  "description": "Magnifique plante de structure à larges feuilles retombantes.",
+  "couleur": "Feuillage pourpre",
+  "source": "Voltz p.130"
+ },
+ "pennisetumsenchrusf": {
+  "latin": "Cenchrus advena 'Fireworks'",
+  "hauteur": "40-60 cm",
+  "port": "touffe",
+  "utilisation": "massif et bac",
+  "description": "Coloris inédit, finement panaché pourpre-rosé. Longs épis souples.",
+  "couleur": "Panaché pourpre-rosé",
+  "source": "Voltz p.130 (Fireworks)"
+ },
+ "pennisetumvillosum": {
+  "latin": "Pennisetum villosum",
+  "hauteur": "40-60 cm",
+  "port": "touffe",
+  "feuillage": "caduc",
+  "utilisation": "massif",
+  "description": "Épillets plumeux, tombants. Bel effet grâce au vent.",
+  "couleur": "Épis blanc crème",
+  "source": "Voltz p.132"
+ },
+ "pennisetumalopperurol": {
+  "latin": "Pennisetum alopecuroides",
+  "source": "Voltz p.132 (variété non précisée)"
+ },
+ "tenussimastipa": {
+  "latin": "Stipa tenuissima",
+  "source": "Voltz p.135 (variété non précisée)"
+ },
+ "tenussimaangelair": {
+  "latin": "Stipa tenuissima 'Angel Hair'",
+  "hauteur": "60-80 cm",
+  "port": "touffe",
+  "feuillage": "semi-persistant",
+  "utilisation": "massif",
+  "source": "Voltz p.135 (Angel Hair)"
+ },
+ "gomphrenatruffula": {
+  "latin": "Gomphrena hybrida 'Truffula'",
+  "hauteur": "40-60 cm",
+  "port": "érigé",
+  "utilisation": "massif et jardinière",
+  "description": "Issu de bouture, ce gomphrena a une excellente ramification et fleurira tout l'été à partir de juin.",
+  "couleur": "Rose violacé",
+  "floraison": "Tout l'été, à partir de juin",
+  "source": "Voltz p.136 (Truffula 2025)"
+ },
+ "coleussolarflare": {
+  "latin": "Plectranthus scutellarioides 'Solar Flare'",
+  "hauteur": "40-60 cm",
+  "port": "droit",
+  "utilisation": "massif et bac",
+  "description": "Coleus résistant au soleil. Feuillage vert chartreuse nervuré de noir.",
+  "couleur": "Feuillage vert chartreuse nervuré de pourpre foncé",
+  "source": "Voltz p.78"
+ },
+ "coleusskeletal": {
+  "latin": "Plectranthus scutellarioides 'Skeletal'",
+  "hauteur": "20-40 cm",
+  "port": "boule",
+  "utilisation": "massif et bac",
+  "description": "Coleus compact résistant au soleil. Le plus original avec son feuillage en dentelle bordeaux aux bordures vertes.",
+  "couleur": "Feuillage bordeaux bordé de vert",
+  "source": "Voltz p.78"
+ },
+ "coreopsisuptickred": {
+  "latin": "Coreopsis hybrida UpTick™ Red",
+  "hauteur": "40-60 cm",
+  "port": "droit",
+  "feuillage": "caduc",
+  "utilisation": "massif",
+  "description": "Coreopsis hybride à très larges fleurs, fleurissant tout au long de la saison.",
+  "couleur": "Rouge bordé de jaune",
+  "floraison": "Tout au long de la saison",
+  "source": "Voltz p.82"
+ },
+ "delospermahotorange": {
+  "latin": "Delosperma nubigenum 'Wheels of Wonder'",
+  "hauteur": "10-20 cm",
+  "port": "traçant / boule",
+  "feuillage": "persistant",
+  "utilisation": "massif et vasque",
+  "description": "Port vigoureux et grandes fleurs. Excellent en couvre-sol.",
+  "couleur": "Orange à cœur jaune",
+  "source": "Voltz p.92 (Wheels of Wonder Hot Orange)"
+ },
+ "delospermahotpink": {
+  "latin": "Delosperma nubigenum 'Wheels of Wonder'",
+  "hauteur": "10-20 cm",
+  "port": "traçant / boule",
+  "feuillage": "persistant",
+  "utilisation": "massif et vasque",
+  "description": "Port vigoureux et grandes fleurs. Excellent en couvre-sol.",
+  "couleur": "Rose fuchsia à cœur jaune",
+  "source": "Voltz p.92 (Wheels of Wonder Hot Pink)"
+ },
+ "dorotheanthusmezoo": {
+  "latin": "Aptenia cordifolia 'Mezoo'",
+  "hauteur": "10-20 cm",
+  "port": "traçant",
+  "utilisation": "suspension et vasque",
+  "description": "Plante succulente au feuillage vert clair bordé crème. Croissance rapide ; excellente résistance à la sécheresse.",
+  "couleur": "Feuillage vert clair bordé crème, petites fleurs rouges",
+  "source": "Voltz p.98"
+ },
+ "echinacealakotajaune": {
+  "hauteur": "40-60 cm",
+  "port": "droit",
+  "feuillage": "caduc",
+  "utilisation": "massif et bac",
+  "latin": "Echinacea purpurea Artisan™ (Lakota™) Yellow Ombre",
+  "description": "Génétique récente d'Echinacea issue de semences. Plantes ramifiées dès la base, tiges solides, fleurs aux couleurs intenses.",
+  "couleur": "Jaune",
+  "source": "Voltz p.100 (Artisan / Lakota Yellow Ombre)"
+ },
+ "echinaceaminibelle": {
+  "hauteur": "40-60 cm",
+  "port": "droit",
+  "feuillage": "caduc",
+  "utilisation": "massif et bac",
+  "latin": "Echinacea hybrida 'Minibelle'",
+  "description": "Fleur double type scabieuse, d'une couleur rose très lumineuse. Port droit. Tolérant à la sécheresse.",
+  "couleur": "Rose lumineux, fleur double",
+  "source": "Voltz p.101"
+ },
+ "echinaceastaquilasunrise": {
+  "hauteur": "60-80 cm",
+  "port": "droit",
+  "feuillage": "caduc",
+  "utilisation": "massif et bac",
+  "latin": "Echinacea hybrida Sunseekers 'Tequila Sunrise'",
+  "description": "Fleurs semi-doubles. Très belle série au port compact et homogène, se ramifiant bien depuis le cœur.",
+  "couleur": "Jaune à cœur rouge",
+  "source": "Voltz p.102 (Sunseekers Tequila Sunrise)"
+ },
+ "echinaceasweetsandia": {
+  "hauteur": "40-60 cm",
+  "port": "droit",
+  "feuillage": "caduc",
+  "utilisation": "massif et bac",
+  "latin": "Echinacea hybrida 'Sweet Sandia'",
+  "description": "Variété compacte et homogène, très florifère, aux fleurs originales bicolores citron vert au cœur rose.",
+  "couleur": "Bicolore citron vert au cœur rose",
+  "source": "Voltz p.103"
+ },
+ "gaillardefanfare": {
+  "latin": "Gaillardia grandiflora Fanfare",
+  "hauteur": "20-40 cm",
+  "port": "droit",
+  "feuillage": "non persistant",
+  "utilisation": "massif et vasque",
+  "description": "Série à fleurs tubulées, à privilégier en fleurissement de proximité.",
+  "source": "Voltz p.113 (série Fanfare, coloris non précisé)"
+ },
+ "gauraeverlast": {
+  "latin": "Gaura lindheimeri Everlast™",
+  "hauteur": "40-60 cm",
+  "port": "droit",
+  "feuillage": "persistant",
+  "utilisation": "massif",
+  "description": "Série très précoce avec une excellente ramification et une croissance rapide mais compacte. Feuillage qui ne jaunit pas.",
+  "source": "Voltz p.115 (série Everlast, coloris non précisé)"
+ },
+ "gaurarosyjane": {
+  "latin": "Gaura lindheimeri 'Rosy Jane'",
+  "hauteur": "60-80 cm",
+  "port": "droit",
+  "feuillage": "persistant",
+  "utilisation": "massif et bac",
+  "description": "Variété à fleurs bicolores, très vigoureuse.",
+  "couleur": "Bicolore blanc et rose",
+  "source": "Voltz p.114"
+ },
+ "heliopsissoledamor": {
+  "latin": "Heliopsis helianthoides 'Sole d'Amore'",
+  "hauteur": "20-40 cm",
+  "port": "retombant",
+  "feuillage": "caduc",
+  "utilisation": "massif",
+  "description": "Le plus rouge de la série Sole. Grandes fleurs intenses aux pointes jaunes. Feuillage noir.",
+  "couleur": "Rouge orangé à pointes jaunes",
+  "source": "Voltz p.139"
+ },
+ "hemerocallislighttheway": {
+  "latin": "Hemerocallis 'Light on The Way'",
+  "hauteur": "40-60 cm",
+  "port": "touffe",
+  "feuillage": "caduc",
+  "utilisation": "massif",
+  "description": "Feuilles semi-persistantes, port compact formant une touffe. Petites fleurs en forme de trompette, jaune citron, agréablement parfumées.",
+  "couleur": "Jaune citron, parfumé",
+  "floraison": "Juin et juillet",
+  "source": "Voltz p.141 (Light on The Way)"
+ },
+ "hemerocallisprimalscream": {
+  "latin": "Hemerocallis 'Primal Scream'",
+  "hauteur": "120 cm",
+  "port": "touffe",
+  "feuillage": "caduc",
+  "utilisation": "massif",
+  "description": "Excellente sélection à grandes fleurs (16 à 18 cm) ayant reçu plusieurs prix. Longue floraison.",
+  "couleur": "Orange vif",
+  "source": "Voltz p.141"
+ },
+ "heucheracaramel": {
+  "hauteur": "20-40 cm",
+  "port": "rond",
+  "feuillage": "persistant",
+  "latin": "Heuchera hybrida 'Caramel'",
+  "utilisation": "massif",
+  "description": "Feuillage aux teintes brun caramel persistant. Plantation en zone ombragée.",
+  "couleur": "Feuillage brun caramel",
+  "exposition": "Ombre",
+  "source": "Voltz p.142"
+ },
+ "heucherablackforestcake": {
+  "hauteur": "20-40 cm",
+  "port": "rond",
+  "feuillage": "persistant",
+  "latin": "Heuchera hybrida 'Black Forest Cake'",
+  "utilisation": "massif et bac",
+  "description": "Heuchère au port rond compact. Feuillage noir exceptionnel, belles hampes florales rouges d'un joli contraste.",
+  "couleur": "Feuillage noir, fleurs rouges",
+  "source": "Voltz p.143"
+ },
+ "hibiscushcarousselghost": {
+  "latin": "Hibiscus moscheutos Carousel® 'Ghost'",
+  "hauteur": "100-120 cm",
+  "port": "droit",
+  "feuillage": "caduc",
+  "utilisation": "massif et bac",
+  "description": "Fleurs géantes (20 à 22 cm de diamètre) sur un feuillage profondément découpé presque noir.",
+  "couleur": "Blanc pur, feuillage presque noir",
+  "floraison": "Juillet à septembre",
+  "source": "Voltz p.145 (Carousel Ghost)"
+ },
+ "hibiscusholygrail": {
+  "latin": "Hibiscus moscheutos Summerific® 'Holy Grail'",
+  "hauteur": "80-100 cm",
+  "port": "droit",
+  "feuillage": "caduc",
+  "utilisation": "massif",
+  "description": "Série compacte. Fleurs de 20 cm de diamètre minimum à partir de juillet. La plante disparaît en hiver et repart de la souche au milieu du printemps.",
+  "couleur": "Rouge foncé",
+  "floraison": "À partir de juillet",
+  "source": "Voltz p.146 (Summerific compactes)"
+ },
+ "hibiscussummermyvalentine": {
+  "latin": "Hibiscus moscheutos Summerific® 'My Valentine'",
+  "hauteur": "100-120 cm",
+  "port": "droit",
+  "feuillage": "caduc",
+  "utilisation": "massif",
+  "description": "Série à la croissance vigoureuse. Fleurs de 20 cm de diamètre minimum à partir de juillet. La plante disparaît en hiver et repart de la souche au milieu du printemps.",
+  "couleur": "Rouge",
+  "floraison": "À partir de juillet",
+  "source": "Voltz p.146 (Summerific My Valentine)"
+ },
+ "hostaautumnfrost": {
+  "latin": "Hosta Shadowland® 'Autumn Frost'",
+  "hauteur": "20-40 cm",
+  "port": "touffe",
+  "feuillage": "caduc",
+  "utilisation": "massif et bac",
+  "couleur": "Feuillage bleu-vert largement bordé de jaune crème",
+  "source": "Voltz p.147"
+ },
+ "hostadiamondlike": {
+  "latin": "Hosta Shadowland® 'Diamond Lake'",
+  "hauteur": "20-40 cm",
+  "port": "touffe",
+  "feuillage": "caduc",
+  "utilisation": "massif et bac",
+  "couleur": "Feuillage bleu-vert ondulé",
+  "source": "Voltz p.147 (Diamond Lake)"
+ },
+ "ipomeemidnightlace": {
+  "latin": "Ipomoea batatas Illusion® 'Midnight Lace'",
+  "hauteur": "20-40 cm",
+  "port": "boule / semi-retombant",
+  "utilisation": "massif, suspension et vasque",
+  "description": "Série d'Ipomée au feuillage original très fin.",
+  "couleur": "Feuillage pourpre noir très découpé",
+  "source": "Voltz p.154"
+ },
+ "ipomeemarguerite": {
+  "latin": "Ipomoea batatas 'Marguerite'",
+  "hauteur": "20-40 cm",
+  "port": "retombant",
+  "utilisation": "massif, suspension et vasque",
+  "description": "Croissance rapide. Extrêmement vigoureuse. Intéressante en association.",
+  "couleur": "Feuillage vert tendre",
+  "source": "Voltz p.154 (Marguerite Green)"
+ },
+ "osteospermumgrandcanyonmix": {
+  "latin": "Osteospermum (Dimorphotheca ecklonis) Akila® F1 Grand Canyon Mix",
+  "hauteur": "20-40 cm",
+  "port": "boule",
+  "utilisation": "massif",
+  "description": "Variété présentant une excellente ramification naturelle.",
+  "couleur": "Mélange crème, jaune, rose, violet et blanc",
+  "source": "Voltz p.180 (Akila Grand Canyon Mix)"
+ },
+ "geraniumlierrelilas": {
+  "latin": "Pelargonium peltatum, fleurs simples",
+  "couleur": "Rose lilas",
+  "source": "Voltz p.186 (Balcon / Decora Lilas)"
+ },
+ "plectranthussasha": {
+  "latin": "Plectranthus ciliatus 'Sasha'",
+  "hauteur": "20-40 cm",
+  "couleur": "Feuillage panaché jaune crème et vert",
+  "source": "Voltz p.200"
+ },
+ "plectranthuscoleoidesvariegata": {
+  "latin": "Plectranthus coleoides 'Variegata'",
+  "hauteur": "20-40 cm",
+  "port": "droit puis retombant",
+  "utilisation": "massif et bac",
+  "description": "Plante vigoureuse à feuillage décoratif panaché.",
+  "couleur": "Feuillage vert panaché de blanc crème",
+  "source": "Voltz p.200"
+ },
+ "ricin": {
+  "latin": "Ricinus communis 'Carmencita Red'",
+  "hauteur": "120-160 cm",
+  "port": "droit",
+  "utilisation": "massif",
+  "description": "Feuillage pourpre. En massif, très apprécié en plante d'incrustation. Attention : graines toxiques.",
+  "couleur": "Feuillage pourpre",
+  "source": "Voltz p.202 (Carmencita Red, seul ricin du catalogue)"
+ },
+ "scaevolafancyfantasyimp": {
+  "latin": "Scaevola aemula Fancy",
+  "hauteur": "20-40 cm",
+  "port": "semi-érigé",
+  "utilisation": "massif, suspension et vasque",
+  "description": "Floraison précoce et généreuse tout au long de l'été et croissance homogène en boule.",
+  "source": "Voltz p.218 (série Fancy, coloris non précisé)"
+ },
+ "saugehotlips": {
+  "latin": "Salvia greggii 'Hot Lips'",
+  "hauteur": "40-60 cm",
+  "port": "buissonnant",
+  "feuillage": "semi-persistant",
+  "utilisation": "massif et vasque",
+  "description": "Floraison prolongée et portée au-dessus d'un feuillage fin aromatique. Excellente résistance à la sécheresse.",
+  "couleur": "Bicolore rouge et blanc",
+  "source": "Voltz p.212"
+ },
+ "saugeblackandbloom": {
+  "latin": "Salvia guaranitica 'Black & Bloom'",
+  "hauteur": "80-100 cm",
+  "port": "buissonnant",
+  "feuillage": "caduc",
+  "utilisation": "massif et bac",
+  "description": "Variété plus vigoureuse, à plus grandes fleurs et au feuillage vert sombre plus large que la variété traditionnelle. Très ramifiée, tiges solides.",
+  "couleur": "Bleu foncé",
+  "source": "Voltz p.208"
+ },
+ "tubalghiahimba": {
+  "latin": "Tulbaghia violacea 'Himba'",
+  "hauteur": "20-50 cm",
+  "port": "droit",
+  "feuillage": "persistant",
+  "utilisation": "massif",
+  "description": "Variété vigoureuse, à très belles fleurs rose violacé et au large feuillage rubané vert. L'arôme d'ail est discret.",
+  "couleur": "Rose violacé",
+  "source": "Voltz p.232"
+ },
+ "senecioangelwings": {
+  "latin": "Senecio candicans 'Angel Wings'",
+  "hauteur": "40-60 cm",
+  "port": "droit",
+  "feuillage": "persistant",
+  "utilisation": "massif et vasque",
+  "description": "Plante aux grandes feuilles argentées duveteuses.",
+  "couleur": "Feuillage argenté",
+  "source": "Voltz p.219"
+ },
+ "sempervivumchickcharmssteelappeal": {
+  "latin": "Sempervivum Chick Charms® 'Steel Appeal'",
+  "hauteur": "20 cm",
+  "port": "semi-traçant",
+  "feuillage": "persistant",
+  "utilisation": "massif et vasque",
+  "description": "Vivace succulente, superbe en association !",
+  "couleur": "Rosette gris-vert à cœur pourpre",
+  "source": "Voltz p.222"
+ },
+ "oenotheralemondrop": {
+  "latin": "Oenothera fruticosa 'Lemon Drop'",
+  "hauteur": "20-40 cm",
+  "port": "boule / semi-retombant",
+  "feuillage": "caduc",
+  "utilisation": "massif et bac",
+  "description": "Belle vivace à floraison jaune citron dès la mi-mai, remontante. Plante peu sensible à l'oïdium.",
+  "couleur": "Jaune citron",
+  "floraison": "Dès la mi-mai, remontante",
+  "source": "Voltz p.177"
+ },
+ "dianthusbkahoripink": {
+  "latin": "Dianthus Beauties® 'Kahori'",
+  "hauteur": "10-20 cm",
+  "port": "rond",
+  "feuillage": "persistant",
+  "utilisation": "massif",
+  "description": "Variété d'une exceptionnelle précocité et floribondité. Plante compacte et arrondie aux fines feuilles argentées. Très nombreuses fleurs simples.",
+  "couleur": "Rose fuchsia",
+  "source": "Voltz p.261 (Beauties Kahori)"
+ },
+ "geraniumstormynight": {
+  "latin": "Geranium maculatum 'Stormy Night'",
+  "hauteur": "40-60 cm",
+  "port": "tapissant",
+  "utilisation": "massif",
+  "description": "Son feuillage bronze acajou met parfaitement en valeur sa belle floraison rose mauve. Le géranium idéal pour couvrir des zones de sous-bois.",
+  "couleur": "Rose mauve, feuillage bronze acajou",
+  "source": "Voltz p.268"
+ },
+ "lavandegrosso": {
+  "latin": "Lavandula intermedia 'Grosso'",
+  "hauteur": "40-60 cm",
+  "port": "boule",
+  "feuillage": "persistant",
+  "utilisation": "massif et bac",
+  "description": "Variété compacte, vigoureuse, à épis bleu-violet foncé très parfumés. Plants déjà vernalisés pour permettre la floraison dès la première année.",
+  "couleur": "Bleu-violet foncé, très parfumé",
+  "source": "Voltz p.162"
+ },
+ "leucanthemumbananacream": {
+  "latin": "Leucanthemum superbum 'Banana Cream'",
+  "hauteur": "40-60 cm",
+  "port": "droit",
+  "feuillage": "caduc",
+  "utilisation": "massif",
+  "description": "Très grandes fleurs au coloris original jaune crème.",
+  "couleur": "Jaune crème",
+  "source": "Voltz p.162 (Banana Cream Yellow 2023 Imp.)"
+ },
+ "leucanthemumdaisymay": {
+  "latin": "Leucanthemum superbum 'Daisy May'",
+  "hauteur": "40-60 cm",
+  "port": "droit",
+  "feuillage": "caduc",
+  "utilisation": "massif",
+  "description": "Variété précoce à faible besoin de vernalisation. Port souple. Bonne remontée à fleur.",
+  "couleur": "Blanc à cœur jaune",
+  "source": "Voltz p.162"
+ },
+ "lobulariaprincessinpurple": {
+  "latin": "Lobularia maritima 'Princess in Purple'",
+  "hauteur": "20-40 cm",
+  "port": "semi-retombant",
+  "utilisation": "massif, vasque et suspension",
+  "description": "Fleurs légèrement plus petites que 'Snow Princess' ; croissance plus courte.",
+  "couleur": "Lavande à violet-pourpre",
+  "source": "Voltz p.166"
+ },
+ "lythrumsrobin": {
+  "latin": "Lythrum salicaria 'Robin'",
+  "hauteur": "40-60 cm",
+  "port": "érigé",
+  "feuillage": "caduc",
+  "utilisation": "massif",
+  "description": "Vivace utilisée en annuelle.",
+  "couleur": "Carmin",
+  "source": "Voltz p.168"
+ },
+ "mufliersonnetmix": {
+  "latin": "Antirrhinum majus Sonnet F1 Mix",
+  "hauteur": "40-60 cm",
+  "port": "droit",
+  "utilisation": "massif",
+  "description": "Variété aux tiges solides portant de longs épis floraux, parfaitement adaptée au fleurissement en massifs ou aux gros conteneurs.",
+  "couleur": "Mélange (rouge, blanc, jaune, rose…)",
+  "source": "Voltz p.173 (Sonnet F1 Mix)"
+ },
+ "nemesiasunsatia": {
+  "latin": "Nemesia hybrida Sunsatia™ Plus",
+  "hauteur": "40-60 cm",
+  "port": "semi-retombant",
+  "utilisation": "suspension et vasque",
+  "description": "Grandes fleurs, abondantes et odorantes. Bonne ramification naturelle, structure retombante compacte. Floraison très précoce. Bonne résistance aux intempéries.",
+  "source": "Voltz p.175 (série Sunsatia Plus, coloris non précisé)"
+ },
+ "capucinetiptop": {
+  "hauteur": "20 cm",
+  "port": "compact, forme rapidement un large tapis",
+  "feuillage": "vert moyen, épais",
+  "couleur": "Abricot veiné de fils orangés",
+  "floraison": "De mai aux gelées",
+  "description": "Plante annuelle, vigoureuse et compacte. Son feuillage forme rapidement un large tapis. De nombreuses et magnifiques fleurs solitaires, de couleur douce, se dressent pour pavaner et attirer les abeilles."
+ },
+ "lobulariasnowprincess": {
+  "latin": "Lobularia 'Snow Princess'",
+  "hauteur": "20-40 cm",
+  "port": "retombant",
+  "utilisation": "massif, vasque et suspension",
+  "description": "La variété originelle ! Grandes fleurs, croissance vigoureuse, floraison ininterrompue. Très bonne tolérance aux intempéries.",
+  "couleur": "Blanc",
+  "source": "Voltz p.166"
+ },
+ "geraniumlierresnowcascade": {
+  "couleur": "Blanc veiné de pourpre"
+ },
+ "calibrachoaredstar": {
+  "couleur": "Rouge à étoile jaune"
+ },
+ "clematitebleu": {
+  "couleur": "Bleu violet"
+ },
+ "clematiteboulevardnubia": {
+  "couleur": "Rouge carmin"
+ },
+ "clematiteboulevardninon": {
+  "couleur": "Blanc à cœur rose"
+ },
+ "geraniumzonaleiredimperial": {
+  "couleur": "Rouge orangé"
+ },
+ "geraniumzonalerose": {
+  "couleur": "Rose à cœur rose foncé"
+ },
+ "cosmosmelangeblancroseetcarmin": {
+  "latin": "Cosmos bipinnatus",
+  "hauteur": "60-80 cm",
+  "port": "droit",
+  "utilisation": "massif",
+  "description": "La référence en massif. Très grandes fleurs.",
+  "couleur": "Mélange blanc, rose et carmin",
+  "source": "Voltz p.83 (Sonata / Symphony Mix)"
+ },
+ "verveinerigidasantos": {
+  "latin": "Verbena rigida venosa 'Santos Deep Lilac'",
+  "hauteur": "20-40 cm",
+  "port": "divergent",
+  "feuillage": "caduc",
+  "utilisation": "massif et bac",
+  "description": "Variété au port ramifié, à forte floraison. Très bonne tolérance à la chaleur.",
+  "couleur": "Bleu violet",
+  "source": "Voltz p.236 (Santos Deep Lilac)"
+ },
+ "verveinebonariensis": {
+  "latin": "Verbena bonariensis",
+  "source": "Voltz p.238 (variété non précisée)",
+  "couleur": "Mauve"
+ },
+ "begoniaappleblossom": {
+  "couleur": "Blanc rosé, fleur double"
+ }
+}

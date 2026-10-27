@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>APPUI – Catalogue</title>
+  <meta name="description" content="Légumes et plants de fleurs du chantier d'insertion APPUI">
+  <meta name="theme-color" content="#2c3e40">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="APPUI">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===== Écran d'identification ===== -->
+  <section class="ecran-connexion" id="ecranConnexion" hidden>
+    <img class="ecran-connexion__logo" src="icons/logo-appui.png" alt="APPUI – travaillons ensemble">
+    <div class="carte-connexion">
+      <div class="onglets" role="tablist">
+        <button role="tab" class="onglet actif" data-onglet="connexion">J'ai déjà un compte</button>
+        <button role="tab" class="onglet" data-onglet="inscription">Je crée mon compte</button>
+      </div>
+
+      <form id="formConnexion" class="formulaire">
+        <label>Téléphone ou e-mail<input name="identifiant" required autocomplete="username"></label>
+        <label>Mot de passe<input name="motDePasse" type="password" required autocomplete="current-password"></label>
+        <button type="submit" class="btn-principal">Se connecter</button>
+        <p class="aide">Mot de passe oublié ? <a class="lien-equipe" data-sujet="Mot de passe oublié">Écrivez à l'équipe APPUI</a> : elle le réinitialise et vous en choisissez un nouveau à la connexion suivante.</p>
+      </form>
+
+      <form id="formInscription" class="formulaire" hidden>
+        <div class="deux-colonnes">
+          <label>Prénom<input name="prenom" required autocomplete="given-name"></label>
+          <label>Nom<input name="nom" required autocomplete="family-name"></label>
+        </div>
+        <label>Téléphone<input name="telephone" type="tel" required autocomplete="tel"></label>
+        <label>E-mail <small>(pour recevoir le récapitulatif)</small><input name="email" type="email" autocomplete="email"></label>
+        <label>Commune<input name="commune" autocomplete="address-level2"></label>
+        <label>Mot de passe <small>(6 caractères minimum)</small><input name="motDePasse" type="password" required minlength="6" autocomplete="new-password"></label>
+        <label class="case"><input type="checkbox" required> J'accepte qu'APPUI conserve ces informations pour traiter mes commandes.</label>
+        <button type="submit" class="btn-principal">Créer mon compte</button>
+      </form>
+      <p class="message-erreur" id="erreurConnexion" hidden></p>
+    </div>
+    <p class="mode-demo" id="modeDemo" hidden>Mode démonstration : les comptes et commandes restent sur cet appareil.</p>
+  </section>
+
+  <!-- ===== Application ===== -->
+  <div id="appli" hidden>
+    <header class="entete">
+      <div class="entete__ligne">
+        <button class="btn-rond" id="btnRetour" hidden aria-label="Retour">←</button>
+        <img class="entete__symbole" id="symbole" src="icons/symbole-appui.png" alt="">
+        <div class="entete__titres">
+          <h1 id="titre">APPUI</h1>
+          <p id="sousTitre">travaillons ensemble</p>
+        </div>
+        <button class="btn-rond" id="btnCompte" aria-label="Mon compte">👤</button>
+        <button class="btn-rond btn-panier" id="btnPanier" aria-label="Mon panier">🧺<span id="compteurPanier" hidden>0</span></button>
+      </div>
+      <div class="outils" id="outils" hidden>
+        <input type="search" id="recherche" placeholder="Rechercher…" autocomplete="off">
+      </div>
+    </header>
+
+    <main id="contenu"></main>
+
+    <footer class="pied">
+      <p id="infosRetrait"></p>
+      <p id="contactPied"></p>
+      <p><a class="lien-equipe" data-sujet="Question sur le catalogue">✉️ Une question ? Écrire à l'équipe</a></p>
+      <p class="maj" id="dateMaj"></p>
+    </footer>
+  </div>
+
+  <div class="bandeau-install" id="bandeauInstall" hidden>
+    <span>📲 Installer l'appli APPUI sur votre téléphone</span>
+    <button id="btnInstaller">Installer</button>
+    <button class="fermer" id="btnFermerInstall" aria-label="Fermer">✕</button>
+  </div>
+
+  <!-- Panier -->
+  <dialog id="dlgPanier">
+    <div class="fenetre">
+      <h2>Mon panier</h2>
+      <div id="listePanier"></div>
+      <label>Message pour l'équipe <small>(date de retrait souhaitée, question…)</small><textarea id="messagePanier" rows="3"></textarea></label>
+      <p class="message-erreur" id="erreurPanier" hidden></p>
+      <div class="actions">
+        <button class="btn-principal" id="btnCommander">Envoyer ma commande</button>
+        <button class="btn-secondaire" data-fermer>Continuer mes achats</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Confirmation -->
+  <dialog id="dlgConfirmation">
+    <div class="fenetre fenetre--centre">
+      <div class="grand-icone">🌱</div>
+      <h2>Merci pour votre commande !</h2>
+      <p>Numéro : <b id="numeroCommande"></b></p>
+      <p class="aide">L'équipe APPUI la prépare et vous recontacte pour le retrait. Le total est indicatif : le prix définitif est confirmé au retrait.</p>
+      <div class="actions"><button class="btn-principal" data-fermer>Retour au catalogue</button></div>
+    </div>
+  </dialog>
+
+  <!-- Compte -->
+  <dialog id="dlgCompte">
+    <div class="fenetre">
+      <h2>Mon compte</h2>
+      <div id="infosCompte"></div>
+      <div class="actions">
+        <button class="btn-secondaire" id="btnDeconnexion">Se déconnecter</button>
+        <button class="btn-principal" data-fermer>Fermer</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Fiche détaillée d'une plante -->
+  <dialog id="dlgFiche" class="dlg-fiche">
+    <div id="ficheDetail"></div>
+  </dialog>
+
+  <!-- Choix de la quantité avant l'ajout au panier -->
+  <dialog id="dlgQuantite" class="dlg-quantite">
+    <div class="fenetre" id="choixQuantite"></div>
+  </dialog>
+
+  <!-- Confirmation d'ajout au panier -->
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
