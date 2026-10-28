@@ -656,6 +656,41 @@
 
   // Carte d'une plante : photo, nom, puis une ligne par variante (ou taille) avec son prix et son bouton.
   // Même présentation qu'il y ait une ou plusieurs variantes ; « Voir la fiche » toujours en bas.
+  // Cartes à menu déroulant (3 variantes ou plus) : variante choisie par carte, gardée entre deux affichages
+  const SEUIL_MENU = 3;
+  const choixMenu = {};
+  document.head.insertAdjacentHTML("beforeend", "<style>" +
+    ".offre--menu{display:grid;grid-template-columns:1fr auto;align-items:center;gap:6px 8px;padding:6px}" +
+    ".offre--menu .offre__texte{display:contents}" +
+    ".offre--menu .offre__select{grid-column:1/-1;border:2px solid var(--orange);background-color:var(--orange-clair);color:var(--ardoise-fonce)}" +
+    ".offre--menu{background:var(--orange-clair);border-color:var(--orange)}" +
+    ".fiche__choix{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;margin:2px 0 4px;padding:3px 10px 3px 4px;" +
+    "border-radius:999px;background:var(--orange);color:#fff;font-size:.8rem;font-weight:700;line-height:1.3;white-space:nowrap}" +
+    ".fiche__choix-nb{display:inline-grid;place-items:center;min-width:20px;height:20px;border-radius:50%;background:#fff;color:var(--orange);font-size:.78rem}" +
+    ".offre--menu .offre__prix{font-size:1.05rem;color:var(--ardoise);padding-left:4px}" +
+    ".offre__select{width:100%;min-width:0;font:inherit;font-size:.9rem;font-weight:600;color:var(--ardoise);" +
+    "background:#fff;border:1.5px solid var(--sable);border-radius:10px;padding:8px 28px 8px 10px;cursor:pointer;" +
+    "appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--ardoise) 50%)," +
+    "linear-gradient(135deg,var(--ardoise) 50%,transparent 50%);background-position:calc(100% - 15px) 55%,calc(100% - 10px) 55%;" +
+    "background-size:5px 5px;background-repeat:no-repeat}" +
+    ".offre__select:focus-visible{outline:2px solid var(--orange);outline-offset:1px}" +
+    ".offre--menu .offre__ctrl{flex:none}" +
+    "</style>");
+
+  function choisirMenu(sel) {
+    const carte = sel.closest(".fiche");
+    const x = trouver(sel.value);
+    if (!x) return;
+    choixMenu[carte.dataset.ids] = x.id;
+    carte.dataset.sel = x.id;
+    carte.querySelector(".offre__ctrl").innerHTML = controleQuantite(x);
+    carte.querySelector("[data-prix]").textContent = x.prix !== null ? euros(x.prix) : "Prix au retrait";
+    const img = carte.querySelector(".fiche__photo img");
+    if (x.photo) { img.src = x.photo; img.hidden = false; } else img.hidden = true;
+    const etiquette = carte.querySelector(".fiche__nbvar");
+    if (etiquette) etiquette.textContent = x.photo ? (x.variete || x.nom) : "Photo à venir";
+  }
+
   // Nom latin sur la carte : celui de la plante ; avec plusieurs variétés, sans le nom de variété entre guillemets
   function latinCarte(groupe) {
     const noms = groupe.map((x) => (x.infos && x.infos.latin) || "").filter(Boolean);
@@ -675,6 +710,30 @@
     const actif = groupe.find((x) => x.photo) || p;
     const photo = actif.photo;
     const prix = (x) => (x.prix !== null ? euros(x.prix) : "Prix au retrait");
+    // 3 variantes ou plus : un menu déroulant à la place de la liste, pour garder des cartes de même hauteur
+    if (groupe.length >= SEUIL_MENU) {
+      const cleG = idsGroupe(groupe);
+      const choisi = groupe.find((x) => x.id === choixMenu[groupe.map((y) => y.id).join("§")]) || actif;
+      const menu = '<div class="offre offre--active offre--menu">' +
+        '<span class="offre__texte"><select class="offre__select" data-menu aria-label="Choisir la variété de ' + echapper(p.nom) + '">' +
+        groupe.map((x) => '<option value="' + echapper(x.id) + '"' + (x === choisi ? ' selected' : '') + '>' +
+          echapper(nomVariante(groupe, x)) + (x.stock === 0 ? ' (épuisé)' : '') + '</option>').join("") +
+        '</select><b class="offre__prix" data-prix>' + prix(choisi) + '</b></span><span class="offre__ctrl">' + controleQuantite(choisi) + '</span></div>';
+      const photoM = choisi.photo;
+      return '<article class="fiche' + (groupe.every((x) => x.stock === 0) ? ' fiche--epuisee' : '') + '" data-ids="' + cleG +
+        '" data-sel="' + echapper(choisi.id) + '">' +
+        '<button type="button" class="fiche__photo fiche__ouvrir" style="background-color:' + couleurCategorie(p.categories[0]) + '" aria-label="Voir la fiche de ' + echapper(p.nom) + '">' +
+        '<img src="' + echapper(photoM || '') + '" alt="" loading="lazy"' + (photoM ? '' : ' hidden') + ' onerror="this.hidden=true">' +
+        '<span class="fiche__lettre" aria-hidden="true">' + echapper(p.nom.charAt(0)) + '</span>' +
+        '<span class="fiche__badge">' + echapper(p.categories[0]) + '</span>' +
+        (mellifere ? '<span class="fiche__mell" title="Plante mellifère">🐝<span class="fiche__mell-mot"> Mellifère</span></span>' : '') +
+        '<span class="fiche__nbvar">' + echapper(photoM ? (choisi.variete || nomVariante(groupe, choisi)) : 'Photo à venir') + '</span></button>' +
+        '<div class="fiche__corps">' +
+        '<h3 class="fiche__ouvrir">' + echapper(p.nom) + '</h3>' +
+        (latinCarte(groupe) ? '<p class="fiche__sous" style="font-style:italic">' + echapper(latinCarte(groupe)) + '</p>' : '') +
+        '<p class="fiche__choix"><span class="fiche__choix-nb">' + groupe.length + '</span> variétés <span aria-hidden="true">▾</span></p>' +
+        menu + '<button type="button" class="fiche__voir fiche__ouvrir">Voir la fiche ›</button></div></article>';
+    }
     const lignes = '<ul class="offres">' + groupe.map((x) => {
       const sx = etatStock(x);
       const alerte = x.stock !== 0 && sx.classe === "faible" ? '<em class="offre__alerte">' + sx.texte + '</em>' : '';
@@ -780,7 +839,13 @@
     sauverPanier();
   }
 
+  el.contenu.addEventListener("change", (e) => {
+    const m = e.target.closest("[data-menu]");
+    if (m) choisirMenu(m);
+  });
+
   el.contenu.addEventListener("click", (e) => {
+    if (e.target.closest("[data-menu]")) return;
     const v = e.target.closest("[data-voir]");
     if (v) { montrerVariante(v); return; }
     const o = e.target.closest(".fiche__ouvrir");
